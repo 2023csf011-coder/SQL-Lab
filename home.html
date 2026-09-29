@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1A2A36; /* Dark Blue for the body background */
+            color: #F1F1F1; /* Light text color for better contrast */
+            padding: 20px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Allow the heading and container to stack vertically */
+        }
+
+        /* Login Button Styling */
+        .login-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #50C9C3; /* Teal color for the login button */
+            color: #1A2A36; /* Dark text for contrast */
+            font-size: 18px;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hover effect for login button */
+        .login-btn:hover {
+            background-color: #1ABC9C; /* Slightly darker teal when hovered */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Heading Styling */
+        h1 {
+            color: #50C9C3; /* Light Teal for heading */
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        /* Hover effect for heading */
+        h1:hover {
+            color: #1ABC9C; /* Slightly lighter teal */
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 40px;
+            background-color: #2C3E50; /* Dark Blue for the container background */
+            border-radius: 12px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        /* Hover effect for container */
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Paragraph Styling */
+        p {
+            font-size: 22px; /* Increased font size */
+            color: #BDC3C7; /* Light grey for the description */
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Styling for Signup Boxes */
+        .signup-box {
+            display: flex;
+            flex-direction: column;
+            width: 45%; /* Adjusted to be side by side */
+            padding: 30px;
+            margin: 20px;
+            background-color: #34495E; /* Grey-Blue for the signup boxes */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Hover effect for signup boxes */
+        .signup-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .signup-box h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #50C9C3; /* Light Teal for headings inside the boxes */
+        }
+
+        .signup-box p {
+            font-size: 16px;
+            font-weight: 600; /* Bold for notes */
+            margin-bottom: 20px;
+            color: #F1F1F1; /* Light text color for the notes */
+        }
+
+        /* Button Styling */
+        .btn {
+            display: inline-block;
+            background-color: #50C9C3; /* Light Teal button */
+            color: #1A2A36; /* Dark text for the button */
+            font-size: 18px;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hover effect for button */
+        .btn:hover {
+            background-color: #1ABC9C; /* Slightly darker teal on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Button Active effect */
+        .btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+
+            .signup-box {
+                width: 100%; /* Full width on smaller screens */
+                margin-bottom: 20px;
+            }
+
+            .signup-box h2 {
+                font-size: 22px;
+            }
+
+            .signup-box p {
+                font-size: 14px;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Button -->
+    <a href="{{ url_for('login') }}" class="login-btn">Login</a>
+
+    <h1>Welcome to Quiz Generation System</h1>
+    <p>Test your knowledge or contribute to our quiz system's question bank.</p>
+
+    <div class="container">
+        <div class="signup-box">
+            <h2>Sign Up as a Student</h2>
+            <p>Test your knowledge with our enhanced quiz system.</p>
+            <a href="{{ url_for('student_signup') }}" class="btn">Sign Up as Student</a>
+        </div>
+
+        <div class="signup-box">
+            <h2>Sign Up as a Teacher</h2>
+            <p>Contribute to our quiz system with your knowledge.</p>
+            <a href="{{ url_for('teacher_signup') }}" class="btn">Sign Up as Teacher</a>
+        </div>
+    </div>
+</body>
+</html>
